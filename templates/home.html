@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  ¡Hola {{ user.username }}!
+  {% if user.age %}
+    Tienes {{ user.age }} años.
+  {% endif %}
+  <p><a href="{% url 'logout' %}">Logout</a></p>
+{% else %}
+  <p>No estás logueado</p>
+  <a href="{% url 'login' %}">Login</a> |
+  <a href="{% url 'signup' %}">Registro</a>
+{% endif %}
+{% endblock content %}
